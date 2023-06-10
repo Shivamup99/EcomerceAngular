@@ -1,0 +1,14 @@
+<mat-drawer-container [autosize]="true" class="min-h-full max-w-full mx-auto border-x">
+ <mat-drawer mode="side" opened class="px-8 py-8">
+  <app-category (showCategory)="onShowCategory($event)" ></app-category>
+</mat-drawer>
+ <mat-drawer-content class="p-6">
+  <app-second-header (itemCountChange)="onItemCountChange($event)"  (sortChange)="onSortChange($event)" (columnsCountChange)="onColumsCountChange($event)"></app-second-header>
+  <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
+     <mat-grid-tile *ngFor="let product of products">
+      <app-products [product]="product" (addToCart)="onAddtoCart($event)" class="w-full" [fullWidthMode]="cols===1"> </app-products>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-drawer-content>
+
+</mat-drawer-container>
